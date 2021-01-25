@@ -4,7 +4,7 @@ import { BASE_URL } from './constants/Base';
 import Characters from './components/Characters';
 import Details from './components/Details';
 import './App.css';
-
+import styled from 'styled-components';
 
 function App() {
 
@@ -32,8 +32,9 @@ function App() {
   }, []);
   
   return (
-    <div className='container'>
-      <h1>Characters</h1>
+    <div>
+      <Header>Rick and Morty Characters</Header>
+      <Ultimate>
       {
         character.map(char => {
           return <Characters key={char.id} info={char} action={openDetails} />
@@ -42,11 +43,23 @@ function App() {
       {
         currentCharacterId && <Details characterId={currentCharacterId} close={closeDetails} />
       }
+    </Ultimate>
     </div>
   );
 }
 
+const Ultimate = styled.section`
+display:flex;
+flex-wrap:wrap;
+justify-content:center;
+align-items:center;
+max-width:100%;
+`;
 
+const Header = styled.h1`
+  text-shadow: 1px 1px 5px ${pr => pr.theme.fourthColor};
+  text-align:center;
+`;
 
 
 export default App;
