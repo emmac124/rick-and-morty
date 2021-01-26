@@ -27,7 +27,7 @@ const Details = ({characterId, close}) => {
                 console.log(err);
             })
     }, [characterId]);
-
+   
     return (
         <Container2>
             <h2>Details For {details.name}:</h2>
